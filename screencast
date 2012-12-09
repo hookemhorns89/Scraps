@@ -45,7 +45,7 @@ echo "Compression, ex: 1-5, 1=great 5=nope"
 ## that I had to learn to write this program.
 ## To add variables, substitute any value for $value and
 ## remember to add some type of input and read up top.
-ffmpeg -f alsa -ac 2 -i hw:0,0 -f x11grab -s $resolution -r $fps -i :0.0 -qscale $quality $filename.mp4
+ffmpeg -f pulse -i default -f x11grab -s $resolution -r $fps -i :0.0 -qscale $quality $filename.mp4
 
 ## The alsa -ac 2 part is the audio, the 2 is the number of channels.
 ## The -i hw:0,0 is your hardware address for your microphone
