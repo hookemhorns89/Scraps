@@ -1,0 +1,58 @@
+
+####################################################################
+## Author:  James Kegel                                           ##
+## Email:   GeekBlogTV@Gmail.com                                  ##
+## Date:    Tuesday, November 27, 2012                            ##
+## Site:    http://GeekBlog.TV                                    ##
+## License: CC-Attribution-NonCommercial-ShareAlike 3.0 Unported  ##
+####################################################################
+
+#! /bin/sh
+
+## VARIABLES
+## Here we ask the user about various options.
+## You may comment out the ones you don't use.
+## You may also hard-code any favorite settings.
+
+## FILENAME
+## Filename does not need extension
+## Screencast will prompt on overwrite
+echo "Please enter filename:"
+	read filename
+
+## RESOLUTION
+## Resolution needs to be in 'WIDTHxHEIGHT' format
+## Example: 1280x800 or 800x600 or 1920x1200
+echo "Please enter resolution, ex: 1280x800"
+	read resolution
+
+## FRAMERATE 
+## Adjust how many frames per second you'd like.
+## Common framerates are 24, 25, and 30. Less or more is ok.
+## To decrease filesize, try lowering this value
+echo "Frames Per Second, ex: 1-60"
+	read fps
+
+## COMPRESSION
+## If you want high quality, and high filesize, choose 1.
+## If you want good quality, and less filesize, choose 5.
+echo "Compression, ex: 1-5, 1=great 5=nope"
+	read quality
+
+## EVERYTHING ELSE
+## I use ffmpeg. If you are more of a LibAV person, 
+## then consider yourself part of the problem and reason
+## that I had to learn to write this program.
+## To add variables, substitute any value for $value and
+## remember to add some type of input and read up top.
+ffmpeg -f alsa -ac 2 -i hw:0,0 -f x11grab -s $resolution -r $fps -i :0.0 -qscale $quality $filename.mp4
+
+## The alsa -ac 2 part is the audio, the 2 is the number of channels.
+## The -i hw:0,0 is your hardware address for your microphone
+## The -f x11grab defines your screensize for $resolution value
+## The -r is FrameRATE for $fps value
+## The -i :0.0 is your first monitor, [I think]
+## Qscale defines the quality/compression
+## All formats come out as MP4, but you can make it a variable for
+## choosing your favorite format.
+
