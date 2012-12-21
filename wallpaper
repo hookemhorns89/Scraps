@@ -21,8 +21,8 @@ do
 ## Meat and potatos and Logs
 ## Don't forget to mkdir Logs in your /home/user
 
-echo "##### TIMESTAMP #####"
-date
+echo "##### TIMESTAMP #####" >> /home/user/Logs/wallpaper.log
+date >> /home/user/Logs/wallpaper.log
 echo "Iteration ID: $RANDOM --- SUCCESS" >> /home/user/Logs/wallpaper.log
 
 ## Let's get the DATE and then chop it down to the HOUR digit from 24hr time.
