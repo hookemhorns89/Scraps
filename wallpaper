@@ -1,10 +1,37 @@
+####################################################################
+## Author:  James Kegel                                           ##
+## Email:   GeekBlogTV@Gmail.com                                  ##
+## Date:    Tuesday, November 27, 2012                            ##
+## Site:    http://GeekBlog.TV                                    ##
+## License: CC-Attribution-NonCommercial-ShareAlike 3.0 Unported  ##
+####################################################################
+
+## Get like me
 #! /bin/bash
 
+## Let's start the loop. 20160x10min should be enough cycles for two weeks.
+## If you need more uptime than two weeks you need to get a life.
+
 for i in {1..20160}
+
+## Label the transaction, timestamp it, and print it to the log.
+
 do
-echo "Iteration $RANDOM" >> /home/user/Logs/wallpaper.log
+
+## Meat and potatos and Logs
+## Don't forget to mkdir Logs in your /home/user
+
+echo "##### TIMESTAMP #####"
+date
+echo "Iteration ID: $RANDOM --- SUCCESS" >> /home/user/Logs/wallpaper.log
+
+## Let's get the DATE and then chop it down to the HOUR digit from 24hr time.
+
 papertime=$( date | cut -d' ' -f4 )
 firstdigit=$( echo $papertime | cut -d: -f1)
+
+##
+## Sorting through time periods to determine Morning, Lunch, Afternoon, Night
 
 if [ $firstdigit -ge 0 ] && [ $firstdigit -lt 7 ]
 then
@@ -22,8 +49,21 @@ elif [ $firstdigit -gt 18 ] && [ $firstdigit -lt 24 ]
 then 
 	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /home/user/Pictures/Wallpapers/4.jpg
 else
-	echo "shit is whack, yo!"
+
+## 
+## If shit hits the fan, you will see this in the logfile
+	
+	echo "shit is whack, yo!" >> /home/user/Logs/wallpaper.error.log
+	date >> /home/user/Logs/wallpaper.error.log
+	echo "##########################"
+	echo " "
 fi 
 
+##
+## Length of every cycle, 10 mins = 360
+
 sleep 360
+
+## It is all over now. 
+
 done
