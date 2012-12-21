@@ -1,0 +1,29 @@
+#! /bin/bash
+
+for i in {1..20160}
+do
+echo "Iteration $RANDOM" >> /home/user/Logs/wallpaper.log
+papertime=$( date | cut -d' ' -f4 )
+firstdigit=$( echo $papertime | cut -d: -f1)
+
+if [ $firstdigit -ge 0 ] && [ $firstdigit -lt 7 ]
+then
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /home/user/Pictures/Wallpapers/1.png
+
+elif [ $firstdigit -gt 6 ] && [ $firstdigit -lt 13 ]
+then
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /home/user/Pictures/Wallpapers/2.png
+
+elif [ $firstdigit -gt 12 ] && [ $firstdigit -lt 19 ]
+then
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /home/user/Pictures/Wallpapers/3.jpg
+
+elif [ $firstdigit -gt 18 ] && [ $firstdigit -lt 24 ]
+then 
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s /home/user/Pictures/Wallpapers/4.jpg
+else
+	echo "shit is whack, yo!"
+fi 
+
+sleep 360
+done
