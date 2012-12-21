@@ -9,7 +9,7 @@
 ## Get like me
 #! /bin/bash
 
-## Let's start the loop. 20160x10min should be enough cycles for two weeks.
+## Let's start the loop. 20160x1min should be enough cycles for two weeks.
 ## If you need more uptime than two weeks you need to get a life.
 
 for i in {1..20160}
@@ -60,9 +60,9 @@ else
 fi 
 
 ##
-## Length of every cycle, 10 mins = 360
+## Length of every cycle, 1 min = 60
 
-sleep 360
+sleep 60
 
 ## It is all over now. 
 
