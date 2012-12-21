@@ -55,8 +55,8 @@ else
 	
 	echo "shit is whack, yo!" >> /home/user/Logs/wallpaper.error.log
 	date >> /home/user/Logs/wallpaper.error.log
-	echo "##########################"
-	echo " "
+	echo "##########################" >> /home/user/Logs/wallpaper.error.log
+	echo " " >> /home/user/Logs/wallpaper.error.log
 fi 
 
 ##
