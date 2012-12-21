@@ -9,10 +9,10 @@
 ## Get like me
 #! /bin/bash
 
-## Let's start the loop. 20160x1min should be enough cycles for two weeks.
+## Let's start the loop. 2016x10min should be enough cycles for two weeks.
 ## If you need more uptime than two weeks you need to get a life.
 
-for i in {1..20160}
+for i in {1..2016}
 
 ## Label the transaction, timestamp it, and print it to the log.
 
@@ -62,7 +62,7 @@ fi
 ##
 ## Length of every cycle, 1 min = 60
 
-sleep 60
+sleep 600
 
 ## It is all over now. 
 
